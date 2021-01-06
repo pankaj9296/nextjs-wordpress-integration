@@ -40,5 +40,9 @@ export async function getStaticProps({ preview = false }) {
   const allPosts = await getAllPostsForHome(preview)
   return {
     props: { allPosts, preview },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every second
+    revalidate: 1, // In seconds
   }
 }
